@@ -8,6 +8,7 @@ const app = express();
 
 const schema = gql`
   type Mutation {
+# From here starting post/create request mutation 
     createStudent(
       name: studentName!,
       email: String!,
@@ -29,6 +30,7 @@ const schema = gql`
       grade: String!,
     ) : createResponse!
     ,
+# And from here starting edit/update request mutation
     editStudent(
       id: ID!,
       name: studentName,
@@ -54,6 +56,7 @@ const schema = gql`
       grade: String
     ) : editResponse!
     ,
+# And from here delete request mutation
     deleteStudent(
       id:ID!
     ) : deleteResponse!
@@ -67,6 +70,10 @@ const schema = gql`
     ) : deleteResponse!
 
   }
+
+# Simply create, delete response give simple information but for the testing,
+# when editting i put all the available edittable field from all data then show as result
+# and using it to all response
 
   type createResponse {
     success: Boolean!    
@@ -99,12 +106,17 @@ const schema = gql`
   type Query {
     student(id: ID!): Student,
     students: [Student!]!,
+
     course(id: ID!): Course,
     courses: [Course!]!,
+
+# below Those two are unnecessary and not used really
     grade(id: ID!): Grade,
     grades: [Grade!]!,
+
     gradeInfo(id: ID!): GradeInfo,
     gradesInfo: [GradeInfo!]!,
+# And this is for own query to study little bit about gql
     gradeByStudent(id: ID!): GradeByStudent,
   }
 
@@ -116,7 +128,7 @@ const schema = gql`
     Address: String!,
     Birthday: String!,
     Class: String!,
-    alias: String #nickname
+    alias: String
   }
 
   type Course{
