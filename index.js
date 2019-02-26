@@ -15,7 +15,8 @@ const schema = gql`
       address: String!,
       birthday: String!,
       class: String!,
-      groupId: Int!
+      groupId: Int!,
+      alias: String
       ): createResponse!
     ,
     createCourse(
@@ -217,7 +218,7 @@ const resolvers = {
         Class: args.class,
         GroupId : args.groupId,
         Birthday: args.birthday,
-        alias: null
+        alias: args.alias
       }
       data.students.push(newStudent);
       return { success: true }
