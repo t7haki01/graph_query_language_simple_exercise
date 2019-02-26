@@ -8,7 +8,6 @@ module.exports = {
             Birthday: "14-12-1979",
             Address: "Kotkantie 1",
             Class: "LIV02",
-            enrolledCourses: [1,2,3],
             Id: 1,
             GroupId: 1,
             alias: "MidgetGem"
@@ -20,7 +19,6 @@ module.exports = {
             Birthday: "28-07-1981",
             Address: "Torikatu 1",
             Class: "MAN02",
-            enrolledCourses: [1,2,3],
             Id: 2,
             GroupId: 2,
             alias: "Carras"
@@ -32,7 +30,6 @@ module.exports = {
             Email:"lionel.messi@email.com",
             Birthday: "24-06-1987",
             Class: "Bar06",
-            enrolledCourses: [1,2,3],
             Id: 3,
             GroupId: 3,
             alias: "La Pulga"
@@ -43,21 +40,18 @@ module.exports = {
             Teacher: "Arsène Wenger",
             Name: "How to kick the freekick",
             Description: "This course explains how to kick the freekick in basic and practice kicking the freekick",
-            enrolledStudents: [1,2,3],
             Id: 1
         },
         {
             Teacher: "Kari Laitinen",
             Name: "JAVA Basic",
             Description: "This course is for the very beginner",
-            enrolledStudents: [1,2,3],
             Id: 2
         },
         {
             Teacher: "Kaija Posio",
             Name: "Basic Finnish",
             Description: "This course is for the people who wants to learn Finnish language",
-            enrolledStudents: [1,2,3],
             Id: 3
         }
     ],

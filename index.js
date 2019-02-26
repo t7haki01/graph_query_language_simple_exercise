@@ -14,7 +14,6 @@ const schema = gql`
       address: String!,
       birthday: String!,
       class: String!,
-    #   enrolledCourses: studentCourseInfo!,
       groupId: Int!
       ): createResponse!
     ,
@@ -22,7 +21,6 @@ const schema = gql`
       teacher: String!,
       name: String!,
       description: String!,
-      # enrolledStudents: 
       ) : createResponse!
     ,
     createGrade(
@@ -46,7 +44,6 @@ const schema = gql`
       id: ID!,
       teacher: String,
       description: String,
-      # enrolledStudents:
       name: String
     ) : editResponse!
     ,
@@ -106,7 +103,6 @@ const schema = gql`
     courses: [Course!]!,
     grade(id: ID!): Grade,
     grades: [Grade!]!,
-    # invoice(id: ID!): Invoice!
     gradeInfo(id: ID!): GradeInfo,
     gradesInfo: [GradeInfo!]!,
     gradeByStudent(id: ID!): GradeByStudent,
@@ -114,8 +110,7 @@ const schema = gql`
 
   type Student {
     Id: ID!,
-    groupId: Int!,
-    # enrolledCourses: studentCourseInfo!,
+    GroupId: Int!,
     Email: String!,
     Name: Name!,
     Address: String!,
@@ -128,7 +123,6 @@ const schema = gql`
     Teacher: String!,
     Name: String!,
     Description: String!,
-    # enrolledCourses: ,
     Id: ID!
   }
 
@@ -138,10 +132,6 @@ const schema = gql`
     Grade: String!,
     Id: ID!
   }
-
-#   type studentCourseInfo {
-
-#   }
 
   type Name {
       Firstname: String!,
@@ -171,13 +161,6 @@ const schema = gql`
     Student: Student,
     Grade: String
   }
-#   type Invoice {
-#     id: ID!,
-#     createdDate: String!,
-#     paymentDate: String,
-#     customer: User!
-#     description: String!
-#   }
 `;
 
 const resolvers = {
@@ -188,10 +171,6 @@ const resolvers = {
     students: (parents, args, context, info) => {
       return data.students;
     },
-    // invoice: (parents, args, context, info) => {
-    //   const invoice = invoices.find(i => i.id == args.id);
-    //   return invoice; 
-    // }
     course: (parent, args, context, info) => {
       return data.courses.find(course => course.Id === parseInt(args.id));
     },
@@ -224,7 +203,6 @@ const resolvers = {
         Lastname: args.name.Lastname,
         Address: args.address,
         Class: args.class,
-        // enrolledCourses: args.enrolledCourses,
         GroupId : args.groupId,
         Birthday: args.birthday,
         alias: null
@@ -239,7 +217,6 @@ const resolvers = {
         Teacher: args.teacher,
         Name: args.name,
         Description: args.description,
-        // enrolledCourses: 
       }
       data.courses.push(newCourse);
       return { success: true }
@@ -371,11 +348,9 @@ const resolvers = {
   }, 
   GradeInfo: {
     Student: (parent,args,context,info) => {
-      console.log("From student ", parent.Student);
       return data.students.find(student => student.Id == parent.Student);
     },
     Course: (parent,args,context,info) => {
-      console.log("From course ", parent.Course);
       return data.courses.find(course => course.Id == parent.Course);
     }
   },
@@ -399,13 +374,6 @@ const resolvers = {
       return gradeinfo;
     }
   }
-
-//   Invoice: {
-//     customer: (parent, args, context, info) => {
-//       const user = users.find(u => u.id == parent.customer);
-//       return user;
-//     }
-//   }
 };
 
 const server = new ApolloServer({
