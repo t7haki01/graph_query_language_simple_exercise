@@ -28,7 +28,6 @@ query stduent_get_all
     Class
     alias
     Birthday
-	  
     Name{
     	Firstname 
       Lastname
