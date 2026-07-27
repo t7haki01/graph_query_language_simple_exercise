@@ -12,6 +12,6 @@
     "apollo-server-express": "^2.4.3",
     "express": "^4.16.4",
     "graphql": "^14.1.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^3.1.14"
   }
 }
